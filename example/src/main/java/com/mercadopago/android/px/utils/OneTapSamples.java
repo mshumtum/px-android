@@ -297,6 +297,7 @@ public final class OneTapSamples {
         @NonNull final List<String> excludedPaymentTypes, int amount) {
         final List<Item> items = new ArrayList<>();
         final Item item = new Item("description", 1, new BigDecimal(amount));
+        item.setTitle("Titulo del item");
         item.setId("1234");
         item.setCurrencyId(Sites.ARGENTINA.getCurrencyId());
         items.add(item);
