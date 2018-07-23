@@ -10,7 +10,7 @@ import com.mercadopago.android.px.model.Discount;
 import com.mercadopago.android.px.util.textformatter.TextFormatter;
 import javax.annotation.Nonnull;
 
-public class DetailDirectDiscount extends CompactComponent<DetailDirectDiscount.Props, Void> {
+public class DiscountDetail extends CompactComponent<DiscountDetail.Props, Void> {
 
     public static class Props {
 
@@ -25,13 +25,13 @@ public class DetailDirectDiscount extends CompactComponent<DetailDirectDiscount.
         }
     }
 
-    public DetailDirectDiscount(final Props props) {
+    public DiscountDetail(final Props props) {
         super(props);
     }
 
     @Override
     public View render(@Nonnull final ViewGroup parent) {
-        final View mainContainer = inflate(parent, R.layout.px_view_detail_discount_direct);
+        final View mainContainer = inflate(parent, R.layout.px_view_discount_detail);
         configureDetailMessage(mainContainer);
         configureOffMessage(mainContainer);
         return mainContainer;

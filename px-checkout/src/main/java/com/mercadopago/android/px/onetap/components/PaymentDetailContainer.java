@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.mercadopago.android.px.R;
 import com.mercadopago.android.px.components.CompactComponent;
-import com.mercadopago.android.px.components.DetailDirectDiscount;
+import com.mercadopago.android.px.components.DiscountDetail;
 import com.mercadopago.android.px.customviews.MPTextView;
 import com.mercadopago.android.px.internal.repository.DiscountRepository;
 import com.mercadopago.android.px.model.Campaign;
@@ -48,7 +48,7 @@ public class PaymentDetailContainer extends CompactComponent<PaymentDetailContai
         final Campaign campaign = props.discountRepository.getCampaign();
         if (discount != null && campaign != null) {
             final View discountView =
-                new DetailDirectDiscount(new DetailDirectDiscount.Props(discount, campaign))
+                new DiscountDetail(new DiscountDetail.Props(discount, campaign))
                     .render(parent);
 
             parent.addView(addDiscountTitle(parent));

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.mercadolibre.android.ui.widgets.MeliDialog;
 import com.mercadopago.android.px.R;
-import com.mercadopago.android.px.components.DetailDirectDiscount;
+import com.mercadopago.android.px.components.DiscountDetail;
 import com.mercadopago.android.px.model.Campaign;
 import com.mercadopago.android.px.model.Discount;
 
@@ -38,7 +38,7 @@ public class DiscountDetailDialog extends MeliDialog {
             final Discount discount = args.getParcelable(ARG_DISCOUNT);
             final Campaign campaign = args.getParcelable(ARG_CAMPAIGN);
             final ViewGroup container = view.findViewById(R.id.main_container);
-            final View discountDetail = new DetailDirectDiscount(new DetailDirectDiscount.Props(discount, campaign))
+            final View discountDetail = new DiscountDetail(new DiscountDetail.Props(discount, campaign))
                 .render(container);
             container.addView(discountDetail);
         } else {
