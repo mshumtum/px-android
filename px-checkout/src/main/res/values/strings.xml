@@ -247,7 +247,6 @@
     <string name="px_enter_coupon_code_title">Enter your coupon</string>
 
     <string name="px_interest_label">Does\'t include bank interest</string>
-    <string name="px_discount_dialog_title">My Discount</string>
     <string name="px_excellent">¡Excellent!</string>
     <string name="px_get_your_discount_amount">Now pay your purchase and get\n %1$s discount</string>
     <string name="px_get_your_discount_percent">Now pay your purchase and get %1$s%% discount</string>

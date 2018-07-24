@@ -234,7 +234,6 @@
     <string name="px_enter_coupon_code_title">Ingresa tu cupón</string>
     <string name="px_with_max_coupon_amount">Con tope de descuento</string>
     <string name="px_interest_label">No incluye intereses bancarios</string>
-    <string name="px_discount_dialog_title">Mi descuento</string>
     <string name="px_excellent">¡Excelente!</string>
     <string name="px_get_your_discount_amount">Ahora paga tu compra y obtén\n %1$s de descuento</string>
     <string name="px_get_your_discount_percent">Ahora paga tu compra y obtén %1$s%% de descuento</string>

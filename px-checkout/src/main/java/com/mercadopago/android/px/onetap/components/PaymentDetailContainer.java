@@ -3,14 +3,14 @@ package com.mercadopago.android.px.onetap.components;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
-import com.mercadopago.android.px.R;
 import com.mercadopago.android.px.components.CompactComponent;
-import com.mercadopago.android.px.components.DiscountDetail;
-import com.mercadopago.android.px.customviews.MPTextView;
+import com.mercadopago.android.px.components.DiscountDetailContainer;
 import com.mercadopago.android.px.internal.repository.DiscountRepository;
 import com.mercadopago.android.px.model.Campaign;
 import com.mercadopago.android.px.model.Discount;
 import com.mercadopago.android.px.model.Item;
+import com.mercadopago.android.px.views.DialogTitleType;
+
 import java.util.List;
 import javax.annotation.Nonnull;
 
@@ -47,18 +47,8 @@ public class PaymentDetailContainer extends CompactComponent<PaymentDetailContai
         final Discount discount = props.discountRepository.getDiscount();
         final Campaign campaign = props.discountRepository.getCampaign();
         if (discount != null && campaign != null) {
-            final View discountView =
-                new DiscountDetail(new DiscountDetail.Props(discount, campaign))
-                    .render(parent);
-
-            parent.addView(addDiscountTitle(parent));
-            parent.addView(discountView);
+            final DiscountDetailContainer discountDetailContainer = new DiscountDetailContainer(new DiscountDetailContainer.Props(DialogTitleType.SMALL, discount, campaign));
+            discountDetailContainer.render(parent);
         }
-    }
-
-    private View addDiscountTitle(final ViewGroup parent) {
-        MPTextView title = (MPTextView) inflate(parent, R.layout.px_view_modal_title);
-        title.setText(R.string.px_discount_dialog_title);
-        return title;
     }
 }
