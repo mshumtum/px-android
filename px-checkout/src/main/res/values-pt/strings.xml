@@ -239,6 +239,7 @@
     <string name="px_get_your_discount_percent">Agora pague sua compra e ganhe %1$s%% de desconto</string>
     <string name="px_discount_error_check_this_data">Verificar esses dados</string>
     <string name="px_one_shot_discount_detail">Limite disponível para consumo em um único pagamento. Válido até 1 de agosto de 2019.</string>
+    <string name="px_always_on_discount_detail">A cada pagamento para esta marca, você terá descontos até atingir o limite. Válido até 1 de agosto de 2019.</string>
 
     <!-- Unlock Card -->
     <string name="px_text_unlock_card_start">Lembre-se de</string>

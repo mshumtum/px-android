@@ -55,9 +55,16 @@ public class DiscountDetail extends CompactComponent<DiscountDetail.Props, Void>
 
     private void configureDetailMessage(final View mainContainer) {
         final TextView detailMessage = mainContainer.findViewById(R.id.detail);
-        //FIXME estamos esperando definición de contenido para ver si formateamos la fecha o no va.
+        //FIXME estamos esperando definición de contenido para ver si formateamos la fecha o no.
         if (props.campaign.hasMaxCouponAmount()) {
-            detailMessage.setText(R.string.px_one_shot_discount_detail);
+            if (props.campaign.isAlwaysOnDiscount()) {
+                detailMessage.setText(R.string.px_always_on_discount_detail);
+            } else if (props.campaign.isOneShotDiscount()) {
+                detailMessage.setText(R.string.px_one_shot_discount_detail);
+            } else {
+                //TODO implementar (falta definición de MKTools y Contenido)
+            }
+
         } else {
             detailMessage.setVisibility(View.GONE);
         }
