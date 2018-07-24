@@ -4,10 +4,12 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.mercadopago.android.px.R;
 import com.mercadopago.android.px.model.Campaign;
 import com.mercadopago.android.px.model.Discount;
 import com.mercadopago.android.px.util.textformatter.TextFormatter;
+
 import javax.annotation.Nonnull;
 
 public class DiscountDetail extends CompactComponent<DiscountDetail.Props, Void> {
@@ -32,21 +34,33 @@ public class DiscountDetail extends CompactComponent<DiscountDetail.Props, Void>
     @Override
     public View render(@Nonnull final ViewGroup parent) {
         final View mainContainer = inflate(parent, R.layout.px_view_discount_detail);
+        configureSubtitleMessage(mainContainer);
         configureDetailMessage(mainContainer);
         return mainContainer;
     }
 
-    private void configureDetailMessage(final View mainContainer) {
-        final TextView detailMessage = mainContainer.findViewById(R.id.detail);
+    private void configureSubtitleMessage(final View mainContainer) {
+        final TextView subtitleMessage = mainContainer.findViewById(R.id.subtitle);
         if (props.campaign.hasMaxCouponAmount()) {
             TextFormatter.withCurrencyId(props.discount.getCurrencyId())
-                .withSpace()
-                .amount(props.campaign.getMaxCouponAmount())
-                .normalDecimals()
-                .into(detailMessage)
-                .holder(R.string.px_max_coupon_amount);
+                    .withSpace()
+                    .amount(props.campaign.getMaxCouponAmount())
+                    .normalDecimals()
+                    .into(subtitleMessage)
+                    .holder(R.string.px_max_coupon_amount);
+        } else {
+            subtitleMessage.setVisibility(View.GONE);
+        }
+    }
+
+    private void configureDetailMessage(final View mainContainer) {
+        final TextView detailMessage = mainContainer.findViewById(R.id.detail);
+        //FIXME estamos esperando definición de contenido para ver si formateamos la fecha o no va.
+        if (props.campaign.hasMaxCouponAmount()) {
+            detailMessage.setText(R.string.px_one_shot_discount_detail);
         } else {
             detailMessage.setVisibility(View.GONE);
         }
+
     }
 }
