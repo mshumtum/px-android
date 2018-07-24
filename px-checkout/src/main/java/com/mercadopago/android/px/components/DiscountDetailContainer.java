@@ -72,10 +72,8 @@ public class DiscountDetailContainer extends CompactComponent<DiscountDetailCont
     }
 
     private MPTextView getTitleTextView(final ViewGroup parent) {
-        //TODO build BIG layout
-        MPTextView textView = (MPTextView) inflate(parent, R.layout.px_view_modal_title);
-
-        return props.dialogTitleType.equals(DialogTitleType.BIG) ? textView : textView;
+        return props.dialogTitleType.equals(DialogTitleType.BIG) ? (MPTextView) inflate(parent, R.layout.px_view_big_modal_title)
+                : (MPTextView) inflate(parent, R.layout.px_view_small_modal_title);
     }
 }
 
