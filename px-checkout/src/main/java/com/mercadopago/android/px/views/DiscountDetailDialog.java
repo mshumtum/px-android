@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.mercadolibre.android.ui.widgets.MeliDialog;
 import com.mercadopago.android.px.R;
 import com.mercadopago.android.px.components.DiscountDetailContainer;
+import com.mercadopago.android.px.components.DiscountDetailContainer.Props.DialogTitleType;
 import com.mercadopago.android.px.model.Campaign;
 import com.mercadopago.android.px.model.Discount;
 
