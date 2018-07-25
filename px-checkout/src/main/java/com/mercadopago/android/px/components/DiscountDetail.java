@@ -1,5 +1,6 @@
 package com.mercadopago.android.px.components;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,18 +55,26 @@ public class DiscountDetail extends CompactComponent<DiscountDetail.Props, Void>
     }
 
     private void configureDetailMessage(final View mainContainer) {
-        final TextView detailMessage = mainContainer.findViewById(R.id.detail);
+        final TextView detailTextView = mainContainer.findViewById(R.id.detail);
         if (props.campaign.hasMaxCouponAmount()) {
+            setDetailMessage(detailTextView, R.string.px_one_shot_discount_detail, mainContainer);
+        } else {
+            detailTextView.setVisibility(View.GONE);
+        }
+    }
 
-            if (props.campaign.hasEndDate()) {
-                detailMessage.setText(mainContainer.getResources().getString(R.string.px_one_shot_discount_detail_with_end_date,
-                        props.campaign.getPrettyEndDate()));
-            } else {
-                detailMessage.setText(R.string.px_one_shot_discount_detail);
-            }
+    private void setDetailMessage(TextView detailTextView, int detailId, View view) {
+
+        String detailMessage = view.getResources().getString(detailId);
+
+        if (props.campaign.hasEndDate()) {
+            String endDateMessage = view.getResources().getString(R.string.px_discount_detail_end_date,
+                    props.campaign.getPrettyEndDate());
+
+            detailTextView.setText(detailMessage + " " + endDateMessage);
 
         } else {
-            detailMessage.setVisibility(View.GONE);
+            detailTextView.setText(detailMessage);
         }
     }
 }

@@ -239,7 +239,7 @@
     <string name="px_get_your_discount_percent">Ahora paga tu compra y obtén %1$s%% de descuento</string>
     <string name="px_discount_error_check_this_data">Revisa éste dato</string>
     <string name="px_one_shot_discount_detail">Tope disponible para consumir en un único pago.</string>
-    <string name="px_one_shot_discount_detail_with_end_date">Tope disponible para consumir en un único pago. Válido hasta el %s.</string>
+    <string name="px_discount_detail_end_date">Válido hasta el %s.</string>
 
     <!-- Unlock Card -->
     <string name="px_text_unlock_card_start">Recuerda</string>

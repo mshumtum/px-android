@@ -246,7 +246,7 @@
     <string name="px_enter_coupon_code">Enter your discount coupon</string>
     <string name="px_enter_coupon_code_title">Enter your coupon</string>
     <string name="px_one_shot_discount_detail">The limit is available for one single payment.</string>
-    <string name="px_one_shot_discount_detail_with_end_date">The limit is available for one single payment. Valid until %s.</string>
+    <string name="px_discount_detail_end_date">Valid until %s.</string>
 
     <string name="px_interest_label">Does\'t include bank interest</string>
     <string name="px_excellent">¡Excellent!</string>
