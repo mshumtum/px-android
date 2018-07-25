@@ -9,7 +9,6 @@ import com.mercadopago.android.px.customviews.MPTextView;
 import com.mercadopago.android.px.model.Campaign;
 import com.mercadopago.android.px.model.Discount;
 import com.mercadopago.android.px.util.textformatter.TextFormatter;
-import com.mercadopago.android.px.views.DialogTitleType;
 
 import javax.annotation.Nonnull;
 
@@ -28,6 +27,10 @@ public class DiscountDetailContainer extends CompactComponent<DiscountDetailCont
             this.dialogTitleType = dialogTitleType;
             this.discount = discount;
             this.campaign = campaign;
+        }
+
+        public enum DialogTitleType {
+            BIG,SMALL
         }
     }
 
@@ -72,7 +75,7 @@ public class DiscountDetailContainer extends CompactComponent<DiscountDetailCont
     }
 
     private MPTextView getTitleTextView(final ViewGroup parent) {
-        return props.dialogTitleType.equals(DialogTitleType.BIG) ? (MPTextView) inflate(parent, R.layout.px_view_big_modal_title)
+        return props.dialogTitleType.equals(Props.DialogTitleType.BIG) ? (MPTextView) inflate(parent, R.layout.px_view_big_modal_title)
                 : (MPTextView) inflate(parent, R.layout.px_view_small_modal_title);
     }
 }

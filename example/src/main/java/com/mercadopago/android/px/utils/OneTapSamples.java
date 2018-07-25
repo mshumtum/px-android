@@ -20,6 +20,7 @@ import com.mercadopago.example.R;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public final class OneTapSamples {
@@ -90,16 +91,11 @@ public final class OneTapSamples {
         final GenericPayment payment = new GenericPayment(123L, Payment.StatusCodes.STATUS_APPROVED,
             Payment.StatusDetail.STATUS_DETAIL_ACCREDITED, getPaymentDataWithAccountMoneyPlugin(new BigDecimal(120)));
         final MainPaymentProcessor mainPaymentProcessor = new MainPaymentProcessor(payment);
-        //TODO borrar descuentos cuando consigamos usrs one tap + campaña de descuentos
-        Discount discount = new Discount.Builder("id","ARS", new BigDecimal(50 )).setPercentOff(new BigDecimal(50)).build();
-        Campaign campaign = new Campaign.Builder("1244").build();
-
         return new MercadoPagoCheckout.Builder(ONE_TAP_MERCHANT_PUBLIC_KEY,
             getCheckoutPreferenceWithPayerEmail(new ArrayList<String>(), 120))
             .setPaymentProcessor(mainPaymentProcessor)
             .addPaymentMethodPlugin(new SamplePaymentMethodPlugin(), mainPaymentProcessor)
-            .setPrivateKey(ONE_TAP_PAYER_1_ACCESS_TOKEN)
-                .setDiscount(discount, campaign);
+            .setPrivateKey(ONE_TAP_PAYER_1_ACCESS_TOKEN);
     }
 
     // It should suggest one tap with account money

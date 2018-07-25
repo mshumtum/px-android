@@ -1,5 +1,6 @@
 package com.mercadopago.android.px.components;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,20 +55,32 @@ public class DiscountDetail extends CompactComponent<DiscountDetail.Props, Void>
     }
 
     private void configureDetailMessage(final View mainContainer) {
-        final TextView detailMessage = mainContainer.findViewById(R.id.detail);
-        //FIXME estamos esperando definición de contenido para ver si formateamos la fecha o no.
+        final TextView detailTextView = mainContainer.findViewById(R.id.detail);
         if (props.campaign.hasMaxCouponAmount()) {
+
             if (props.campaign.isAlwaysOnDiscount()) {
-                detailMessage.setText(R.string.px_always_on_discount_detail);
-            } else if (props.campaign.isOneShotDiscount()) {
-                detailMessage.setText(R.string.px_one_shot_discount_detail);
+                setDetailMessage(detailTextView, R.string.px_always_on_discount_detail, mainContainer);
             } else {
-                //TODO implementar (falta definición de MKTools y Contenido)
+                setDetailMessage(detailTextView, R.string.px_one_shot_discount_detail, mainContainer);
             }
 
         } else {
-            detailMessage.setVisibility(View.GONE);
+            detailTextView.setVisibility(View.GONE);
         }
+    }
 
+    private void setDetailMessage(TextView detailTextView, int detailId, View view) {
+
+        String detailMessage = view.getResources().getString(detailId);
+
+        if (props.campaign.hasEndDate()) {
+            String endDateMessage = view.getResources().getString(R.string.px_discount_detail_end_date,
+                    props.campaign.getPrettyEndDate());
+
+            detailTextView.setText(detailMessage + " " + endDateMessage);
+
+        } else {
+            detailTextView.setText(detailMessage);
+        }
     }
 }
