@@ -55,12 +55,17 @@ public class DiscountDetail extends CompactComponent<DiscountDetail.Props, Void>
 
     private void configureDetailMessage(final View mainContainer) {
         final TextView detailMessage = mainContainer.findViewById(R.id.detail);
-        //FIXME estamos esperando definición de contenido para ver si formateamos la fecha o no va.
         if (props.campaign.hasMaxCouponAmount()) {
-            detailMessage.setText(R.string.px_one_shot_discount_detail);
+
+            if (props.campaign.hasEndDate()) {
+                detailMessage.setText(mainContainer.getResources().getString(R.string.px_one_shot_discount_detail_with_end_date,
+                        props.campaign.getPrettyEndDate()));
+            } else {
+                detailMessage.setText(R.string.px_one_shot_discount_detail);
+            }
+
         } else {
             detailMessage.setVisibility(View.GONE);
         }
-
     }
 }

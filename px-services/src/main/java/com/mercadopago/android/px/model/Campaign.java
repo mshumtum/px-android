@@ -4,11 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.internal.bind.DateTypeAdapter;
 import com.mercadopago.android.px.services.util.ParcelableUtil;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -49,8 +51,21 @@ public class Campaign implements Serializable, Parcelable {
         return codeType;
     }
 
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public String getPrettyEndDate() {
+        return DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault())
+                .format(endDate);
+    }
+
     public boolean hasMaxCouponAmount() {
         return maxCouponAmount != null && BigDecimal.ZERO.compareTo(maxCouponAmount) < 0;
+    }
+
+    public boolean hasEndDate() {
+        return endDate != null;
     }
 
     public boolean isSingleCodeDiscountCampaign() {
@@ -109,7 +124,7 @@ public class Campaign implements Serializable, Parcelable {
 
     public String getCampaignTermsUrl() {
         return String
-            .format(Locale.US, "https://api.mercadolibre.com/campaigns/%s/terms_and_conditions?format_type=html", id);
+                .format(Locale.US, "https://api.mercadolibre.com/campaigns/%s/terms_and_conditions?format_type=html", id);
     }
 
     @SuppressWarnings("unused")
