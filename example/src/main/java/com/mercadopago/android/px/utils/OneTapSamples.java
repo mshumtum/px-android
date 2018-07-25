@@ -20,6 +20,7 @@ import com.mercadopago.example.R;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public final class OneTapSamples {
@@ -92,7 +93,7 @@ public final class OneTapSamples {
         final MainPaymentProcessor mainPaymentProcessor = new MainPaymentProcessor(payment);
         //TODO borrar descuentos cuando consigamos usrs one tap + campaña de descuentos
         Discount discount = new Discount.Builder("id","ARS", new BigDecimal(50 )).setPercentOff(new BigDecimal(50)).build();
-        Campaign campaign = new Campaign.Builder("1244").build();
+        Campaign campaign = new Campaign.Builder("12344").build();
 
         return new MercadoPagoCheckout.Builder(ONE_TAP_MERCHANT_PUBLIC_KEY,
             getCheckoutPreferenceWithPayerEmail(new ArrayList<String>(), 120))
